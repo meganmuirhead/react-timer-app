@@ -203,11 +203,7 @@ class Timer extends React.Component {
 
     makingFunc = (e) => {
         console.log('making func clicked', e);
-     
-
-
         this.props.elapsed = 1;
-
     };
 
     render() {
