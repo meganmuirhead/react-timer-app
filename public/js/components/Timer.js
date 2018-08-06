@@ -1,5 +1,7 @@
 
 class Timer extends React.Component {
+
+
     onDelete = () => {
         this.props.deleteTimerCard({
             id: this.props.id
@@ -8,7 +10,7 @@ class Timer extends React.Component {
 
     makingFunc = (e) => {
         console.log('making func clicked', e);
-        this.props.elapsed = 1;
+        // this.props.elapsed = 1;
     };
 
     render() {

@@ -195,6 +195,15 @@ class EditableTimer extends React.Component {
 }
 
 class Timer extends React.Component {
+
+    componentDidMount() {
+        helpers.renderElapsedString(this.props.elapsed, this.props.runningSince);
+    }
+
+    componentWillUnmount() {
+        clearInterval();
+    }
+
     onDelete = () => {
         this.props.deleteTimerCard({
             id: this.props.id
@@ -203,7 +212,8 @@ class Timer extends React.Component {
 
     makingFunc = (e) => {
         console.log('making func clicked', e);
-        this.props.elapsed = 1;
+        //this.props.elapsed = 1;
+        this.forceUpdate();
     };
 
     render() {
@@ -231,15 +241,35 @@ class Timer extends React.Component {
             </span>
                     </div>
                 </div>
-                //start her
-                <div className='ui bottom attached blue basic button' onClick={this.makingFunc}>
+                //start here
+                {/*<TimerActionButton />*/}
+                <div className='ui bottom attached green basic button' onClick={this.makingFunc}>
                     Start
                 </div>
+
             </div>
         );
     }
 }
+class TimerActionButton extends React.Component {
 
+    makingFunc = (e) => {
+        console.log('making func clicked', e);
+        //this.props.elapsed = 1;
+        this.forceUpdate();
+    };
+
+    render()
+     {
+        return(
+            <div className='ui bottom attached green basic button' onClick={this.makingFunc}>
+                Start
+            </div>
+        );
+    }
+
+
+    }
 class TimerForm extends React.Component {
     state = {
         title: this.props.title || '',
